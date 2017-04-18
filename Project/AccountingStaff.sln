@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountingStaff.Web", "AccountingStaff.Web\AccountingStaff.Web.csproj", "{7A7F17C7-9746-41DB-97C1-49119597851C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B4818BDB-A025-4394-B4C5-F3EE9345D1D9} = {B4818BDB-A025-4394-B4C5-F3EE9345D1D9}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountingStaff.Data", "AccountingStaff.Data\AccountingStaff.Data.csproj", "{B4818BDB-A025-4394-B4C5-F3EE9345D1D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rfid", "..\ProjectWPF\project\Rfid\Rfid\Rfid.csproj", "{A93AF8DF-2CB9-436D-891B-75949F9FE273}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A7F17C7-9746-41DB-97C1-49119597851C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A7F17C7-9746-41DB-97C1-49119597851C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A7F17C7-9746-41DB-97C1-49119597851C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A7F17C7-9746-41DB-97C1-49119597851C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4818BDB-A025-4394-B4C5-F3EE9345D1D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4818BDB-A025-4394-B4C5-F3EE9345D1D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4818BDB-A025-4394-B4C5-F3EE9345D1D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4818BDB-A025-4394-B4C5-F3EE9345D1D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A93AF8DF-2CB9-436D-891B-75949F9FE273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A93AF8DF-2CB9-436D-891B-75949F9FE273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A93AF8DF-2CB9-436D-891B-75949F9FE273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A93AF8DF-2CB9-436D-891B-75949F9FE273}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://yuriymorozyuk1995.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = AccountingStaff.Web\\AccountingStaff.Web.csproj
+		SccProjectName1 = AccountingStaff.Web
+		SccLocalPath1 = AccountingStaff.Web
+		SccProjectUniqueName2 = AccountingStaff.Data\\AccountingStaff.Data.csproj
+		SccProjectName2 = AccountingStaff.Data
+		SccLocalPath2 = AccountingStaff.Data
+	EndGlobalSection
+EndGlobal

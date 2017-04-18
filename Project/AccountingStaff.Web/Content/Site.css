@@ -1,0 +1,243 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: #363738;
+    color:white;
+}
+
+h2 
+{
+    color: #4CAF50;
+}
+p
+{
+    color:white;
+}
+
+p.left-p {
+        margin: 10px 10px 10px 10px;
+    }
+
+.calendar-control{
+    padding: 10px;
+}
+
+.calendar-control a{
+    margin: 5px;
+}
+
+a.btn-green:hover {
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 30px;
+    border-color: #4CAF50;
+}
+a.btn-green {
+    text-decoration:none;
+    background-color: transparent;
+    color: #4CAF50;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 30px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #4CAF50;
+}
+a.btn-blue:hover {
+    text-decoration: none;
+    background-color: #428BCA;
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 30px;
+}
+a.btn-blue {
+    text-decoration: none;
+    background-color: transparent;
+    color: #428BCA;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 30px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #428BCA;
+}
+a.btn-red:hover {
+    text-decoration: none;
+    background-color: #F44336;
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 30px;
+}
+a.btn-red {
+    text-decoration: none;
+    background-color: transparent;
+    color: #F44336;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 30px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #F44336;
+}
+
+a.btn-green-icon:hover {
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    border-color: #4CAF50;
+}
+
+a.btn-green-icon {
+    text-decoration: none;
+    background-color: transparent;
+    color: #4CAF50;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #4CAF50;
+}
+
+a.btn-blue-icon:hover {
+    text-decoration: none;
+    background-color: #428BCA;
+    color: white;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+a.btn-blue-icon {
+    text-decoration: none;
+    background-color: transparent;
+    color: #428BCA;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #428BCA;
+}
+
+a.btn-red-icon:hover {
+    text-decoration: none;
+    background-color: #F44336;
+    color: white;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+a.btn-red-icon {
+    text-decoration: none;
+    background-color: transparent;
+    color: #F44336;
+    padding: 8px 11px 8px 9px;
+    cursor: pointer;
+    border-radius: 50px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #F44336;
+}
+
+input[type=submit].btn-red:hover {
+    background-color: #F44336;
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+input[type=submit].btn-red {
+    background-color: transparent;
+    color: #F44336;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 30px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #F44336;
+}
+
+input[type=submit].btn-green:hover {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 30px;
+    border-color: #4CAF50;
+}
+input[type=submit].btn-green {
+    background-color: transparent;
+    color: #4CAF50;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 30px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #4CAF50;
+}
+
+@font-face {
+    font-family: 'segoe-mdl2-assets';
+    src: url('../fonts/segoe-mdl2-assets.ttf') format('truetype');
+}
+
+icon-ms.p {
+    font-family: 'segoe-mdl2-assets';
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    min-width: 180px;
+    max-width: 280px;
+}
+
+/*Green Table*/
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td{
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #414141;
+}
+
+th{
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+/*Admin Menu*/
+
+

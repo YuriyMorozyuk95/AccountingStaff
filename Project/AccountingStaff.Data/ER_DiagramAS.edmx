@@ -1,0 +1,1118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AccountingStaffConnectionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="M_CalendarDate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeDate" Type="int" Nullable="false" />
+          <Property Name="Start" Type="datetime" Nullable="false" />
+          <Property Name="End" Type="datetime" Nullable="false" />
+          <Property Name="Employee_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="M_Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar(max)" />
+          <Property Name="CodeFull" Type="nvarchar(max)" />
+          <Property Name="Director_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="M_Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="M_Person_Id" Type="int" />
+          <Property Name="M_Department_Id" Type="int" />
+          <Property Name="Department_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_PersonInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameFirst" Type="nvarchar(max)" />
+          <Property Name="NameSecond" Type="nvarchar(max)" />
+          <Property Name="NameThird" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar(max)" />
+          <Property Name="DateBirth" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Phones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Number" Type="nvarchar(max)" />
+          <Property Name="Person_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="M_Report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportName" Type="nvarchar(max)" />
+          <Property Name="TypeReport_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_ReportType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="M_Rfids">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RfidCode" Type="nvarchar(max)" />
+          <Property Name="IsArhive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="M_RoleM_Person">
+          <Key>
+            <PropertyRef Name="M_Role_Id" />
+            <PropertyRef Name="M_Person_Id" />
+          </Key>
+          <Property Name="M_Role_Id" Type="int" Nullable="false" />
+          <Property Name="M_Person_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Setting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ThemeApp" Type="int" Nullable="false" />
+          <Property Name="ThemeAccent" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_SettingEmail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MailFrom" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="M_SettingExcel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Path" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="M_SettingLanguage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SelectedLanguage" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_SettingLimitTimer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaxTimeInside" Type="time" Precision="7" Nullable="false" />
+          <Property Name="IntervalCheck" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_WorkDayTimes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SingleDate" Type="datetime" />
+          <Property Name="TimeIn" Type="time" Precision="7" />
+          <Property Name="TimeOut" Type="time" Precision="7" />
+          <Property Name="Employee_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="M_WorkSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Start" Type="time" Precision="7" Nullable="false" />
+          <Property Name="End" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Valid" Type="time" Precision="7" Nullable="false" />
+          <Property Name="TimeDinner" Type="time" Precision="7" />
+          <Property Name="Employee_Id" Type="int" />
+        </EntityType>
+        <Association Name="FK_dbo_M_CalendarDate_dbo_M_Person_Employee_Id">
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="0..1" />
+          <End Role="M_CalendarDate" Type="Self.M_CalendarDate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_CalendarDate">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Department_dbo_M_Person_Director_Id">
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="0..1" />
+          <End Role="M_Department" Type="Self.M_Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Department">
+              <PropertyRef Name="Director_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Person_dbo_M_Department_Department_Id">
+          <End Role="M_Department" Type="Self.M_Department" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Person">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Person_dbo_M_Department_M_Department_Id">
+          <End Role="M_Department" Type="Self.M_Department" Multiplicity="0..1" />
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Person">
+              <PropertyRef Name="M_Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Person_dbo_M_Person_M_Person_Id">
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="0..1" />
+          <End Role="M_Person1" Type="Self.M_Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Person1">
+              <PropertyRef Name="M_Person_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Person_dbo_M_PersonInfo_Id">
+          <End Role="M_PersonInfo" Type="Self.M_PersonInfo" Multiplicity="1" />
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="M_PersonInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Person">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Person_dbo_M_Rfids_Id">
+          <End Role="M_Rfids" Type="Self.M_Rfids" Multiplicity="1" />
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="M_Rfids">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Person">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Phones_dbo_M_PersonInfo_Person_Id">
+          <End Role="M_PersonInfo" Type="Self.M_PersonInfo" Multiplicity="0..1" />
+          <End Role="M_Phones" Type="Self.M_Phones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_PersonInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Phones">
+              <PropertyRef Name="Person_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Report_dbo_M_ReportType_TypeReport_Id">
+          <End Role="M_ReportType" Type="Self.M_ReportType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="M_Report" Type="Self.M_Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_ReportType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Report">
+              <PropertyRef Name="TypeReport_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_RoleM_Person_dbo_M_Person_M_Person_Id">
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="M_RoleM_Person" Type="Self.M_RoleM_Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_RoleM_Person">
+              <PropertyRef Name="M_Person_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_RoleM_Person_dbo_M_Role_M_Role_Id">
+          <End Role="M_Role" Type="Self.M_Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="M_RoleM_Person" Type="Self.M_RoleM_Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_RoleM_Person">
+              <PropertyRef Name="M_Role_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Setting_dbo_M_SettingEmail_Id">
+          <End Role="M_SettingEmail" Type="Self.M_SettingEmail" Multiplicity="1" />
+          <End Role="M_Setting" Type="Self.M_Setting" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="M_SettingEmail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Setting">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Setting_dbo_M_SettingExcel_Id">
+          <End Role="M_SettingExcel" Type="Self.M_SettingExcel" Multiplicity="1" />
+          <End Role="M_Setting" Type="Self.M_Setting" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="M_SettingExcel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Setting">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Setting_dbo_M_SettingLanguage_Id">
+          <End Role="M_SettingLanguage" Type="Self.M_SettingLanguage" Multiplicity="1" />
+          <End Role="M_Setting" Type="Self.M_Setting" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="M_SettingLanguage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Setting">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Setting_dbo_M_SettingLimitTimer_Id">
+          <End Role="M_SettingLimitTimer" Type="Self.M_SettingLimitTimer" Multiplicity="1" />
+          <End Role="M_Setting" Type="Self.M_Setting" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="M_SettingLimitTimer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Setting">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_WorkDayTimes_dbo_M_Person_Employee_Id">
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="0..1" />
+          <End Role="M_WorkDayTimes" Type="Self.M_WorkDayTimes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_WorkDayTimes">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_WorkSchedule_dbo_M_Person_Employee_Id">
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="0..1" />
+          <End Role="M_WorkSchedule" Type="Self.M_WorkSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_WorkSchedule">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AccountingStaffConnectionModelStoreContainer">
+          <EntitySet Name="M_CalendarDate" EntityType="Self.M_CalendarDate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Department" EntityType="Self.M_Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Person" EntityType="Self.M_Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_PersonInfo" EntityType="Self.M_PersonInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Phones" EntityType="Self.M_Phones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Report" EntityType="Self.M_Report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_ReportType" EntityType="Self.M_ReportType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Rfids" EntityType="Self.M_Rfids" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Role" EntityType="Self.M_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_RoleM_Person" EntityType="Self.M_RoleM_Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Setting" EntityType="Self.M_Setting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_SettingEmail" EntityType="Self.M_SettingEmail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_SettingExcel" EntityType="Self.M_SettingExcel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_SettingLanguage" EntityType="Self.M_SettingLanguage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_SettingLimitTimer" EntityType="Self.M_SettingLimitTimer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_WorkDayTimes" EntityType="Self.M_WorkDayTimes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_WorkSchedule" EntityType="Self.M_WorkSchedule" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_M_CalendarDate_dbo_M_Person_Employee_Id" Association="Self.FK_dbo_M_CalendarDate_dbo_M_Person_Employee_Id">
+            <End Role="M_Person" EntitySet="M_Person" />
+            <End Role="M_CalendarDate" EntitySet="M_CalendarDate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Department_dbo_M_Person_Director_Id" Association="Self.FK_dbo_M_Department_dbo_M_Person_Director_Id">
+            <End Role="M_Person" EntitySet="M_Person" />
+            <End Role="M_Department" EntitySet="M_Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Person_dbo_M_Department_Department_Id" Association="Self.FK_dbo_M_Person_dbo_M_Department_Department_Id">
+            <End Role="M_Department" EntitySet="M_Department" />
+            <End Role="M_Person" EntitySet="M_Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Person_dbo_M_Department_M_Department_Id" Association="Self.FK_dbo_M_Person_dbo_M_Department_M_Department_Id">
+            <End Role="M_Department" EntitySet="M_Department" />
+            <End Role="M_Person" EntitySet="M_Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Person_dbo_M_Person_M_Person_Id" Association="Self.FK_dbo_M_Person_dbo_M_Person_M_Person_Id">
+            <End Role="M_Person" EntitySet="M_Person" />
+            <End Role="M_Person1" EntitySet="M_Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Person_dbo_M_PersonInfo_Id" Association="Self.FK_dbo_M_Person_dbo_M_PersonInfo_Id">
+            <End Role="M_PersonInfo" EntitySet="M_PersonInfo" />
+            <End Role="M_Person" EntitySet="M_Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Person_dbo_M_Rfids_Id" Association="Self.FK_dbo_M_Person_dbo_M_Rfids_Id">
+            <End Role="M_Rfids" EntitySet="M_Rfids" />
+            <End Role="M_Person" EntitySet="M_Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Phones_dbo_M_PersonInfo_Person_Id" Association="Self.FK_dbo_M_Phones_dbo_M_PersonInfo_Person_Id">
+            <End Role="M_PersonInfo" EntitySet="M_PersonInfo" />
+            <End Role="M_Phones" EntitySet="M_Phones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Report_dbo_M_ReportType_TypeReport_Id" Association="Self.FK_dbo_M_Report_dbo_M_ReportType_TypeReport_Id">
+            <End Role="M_ReportType" EntitySet="M_ReportType" />
+            <End Role="M_Report" EntitySet="M_Report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_RoleM_Person_dbo_M_Person_M_Person_Id" Association="Self.FK_dbo_M_RoleM_Person_dbo_M_Person_M_Person_Id">
+            <End Role="M_Person" EntitySet="M_Person" />
+            <End Role="M_RoleM_Person" EntitySet="M_RoleM_Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_RoleM_Person_dbo_M_Role_M_Role_Id" Association="Self.FK_dbo_M_RoleM_Person_dbo_M_Role_M_Role_Id">
+            <End Role="M_Role" EntitySet="M_Role" />
+            <End Role="M_RoleM_Person" EntitySet="M_RoleM_Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Setting_dbo_M_SettingEmail_Id" Association="Self.FK_dbo_M_Setting_dbo_M_SettingEmail_Id">
+            <End Role="M_SettingEmail" EntitySet="M_SettingEmail" />
+            <End Role="M_Setting" EntitySet="M_Setting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Setting_dbo_M_SettingExcel_Id" Association="Self.FK_dbo_M_Setting_dbo_M_SettingExcel_Id">
+            <End Role="M_SettingExcel" EntitySet="M_SettingExcel" />
+            <End Role="M_Setting" EntitySet="M_Setting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Setting_dbo_M_SettingLanguage_Id" Association="Self.FK_dbo_M_Setting_dbo_M_SettingLanguage_Id">
+            <End Role="M_SettingLanguage" EntitySet="M_SettingLanguage" />
+            <End Role="M_Setting" EntitySet="M_Setting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Setting_dbo_M_SettingLimitTimer_Id" Association="Self.FK_dbo_M_Setting_dbo_M_SettingLimitTimer_Id">
+            <End Role="M_SettingLimitTimer" EntitySet="M_SettingLimitTimer" />
+            <End Role="M_Setting" EntitySet="M_Setting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_WorkDayTimes_dbo_M_Person_Employee_Id" Association="Self.FK_dbo_M_WorkDayTimes_dbo_M_Person_Employee_Id">
+            <End Role="M_Person" EntitySet="M_Person" />
+            <End Role="M_WorkDayTimes" EntitySet="M_WorkDayTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_WorkSchedule_dbo_M_Person_Employee_Id" Association="Self.FK_dbo_M_WorkSchedule_dbo_M_Person_Employee_Id">
+            <End Role="M_Person" EntitySet="M_Person" />
+            <End Role="M_WorkSchedule" EntitySet="M_WorkSchedule" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AccountingStaffConnectionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="M_CalendarDate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeDate" Type="Int32" Nullable="false" />
+          <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="End" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Employee_Id" Type="Int32" />
+          <NavigationProperty Name="M_Person" Relationship="Self.FK_dbo_M_CalendarDate_dbo_M_Person_Employee_Id" FromRole="M_CalendarDate" ToRole="M_Person" />
+        </EntityType>
+        <EntityType Name="M_Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CodeFull" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Director_Id" Type="Int32" />
+          <NavigationProperty Name="M_Person" Relationship="Self.FK_dbo_M_Department_dbo_M_Person_Director_Id" FromRole="M_Department" ToRole="M_Person" />
+          <NavigationProperty Name="M_Person1" Relationship="Self.FK_dbo_M_Person_dbo_M_Department_Department_Id" FromRole="M_Department" ToRole="M_Person" />
+          <NavigationProperty Name="M_Person2" Relationship="Self.FK_dbo_M_Person_dbo_M_Department_M_Department_Id" FromRole="M_Department" ToRole="M_Person" />
+        </EntityType>
+        <EntityType Name="M_Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="M_Person_Id" Type="Int32" />
+          <Property Name="M_Department_Id" Type="Int32" />
+          <Property Name="Department_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="M_CalendarDate" Relationship="Self.FK_dbo_M_CalendarDate_dbo_M_Person_Employee_Id" FromRole="M_Person" ToRole="M_CalendarDate" />
+          <NavigationProperty Name="M_Department" Relationship="Self.FK_dbo_M_Department_dbo_M_Person_Director_Id" FromRole="M_Person" ToRole="M_Department" />
+          <NavigationProperty Name="M_Department1" Relationship="Self.FK_dbo_M_Person_dbo_M_Department_Department_Id" FromRole="M_Person" ToRole="M_Department" />
+          <NavigationProperty Name="M_Department2" Relationship="Self.FK_dbo_M_Person_dbo_M_Department_M_Department_Id" FromRole="M_Person" ToRole="M_Department" />
+          <NavigationProperty Name="M_Person1" Relationship="Self.FK_dbo_M_Person_dbo_M_Person_M_Person_Id" FromRole="M_Person" ToRole="M_Person1" />
+          <NavigationProperty Name="M_Person2" Relationship="Self.FK_dbo_M_Person_dbo_M_Person_M_Person_Id" FromRole="M_Person1" ToRole="M_Person" />
+          <NavigationProperty Name="M_PersonInfo" Relationship="Self.FK_dbo_M_Person_dbo_M_PersonInfo_Id" FromRole="M_Person" ToRole="M_PersonInfo" />
+          <NavigationProperty Name="M_Rfids" Relationship="Self.FK_dbo_M_Person_dbo_M_Rfids_Id" FromRole="M_Person" ToRole="M_Rfids" />
+          <NavigationProperty Name="M_WorkDayTimes" Relationship="Self.FK_dbo_M_WorkDayTimes_dbo_M_Person_Employee_Id" FromRole="M_Person" ToRole="M_WorkDayTimes" />
+          <NavigationProperty Name="M_WorkSchedule" Relationship="Self.FK_dbo_M_WorkSchedule_dbo_M_Person_Employee_Id" FromRole="M_Person" ToRole="M_WorkSchedule" />
+          <NavigationProperty Name="M_Role" Relationship="Self.M_RoleM_Person" FromRole="M_Person" ToRole="M_Role" />
+        </EntityType>
+        <EntityType Name="M_PersonInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameFirst" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameSecond" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameThird" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="M_Person" Relationship="Self.FK_dbo_M_Person_dbo_M_PersonInfo_Id" FromRole="M_PersonInfo" ToRole="M_Person" />
+          <NavigationProperty Name="M_Phones" Relationship="Self.FK_dbo_M_Phones_dbo_M_PersonInfo_Person_Id" FromRole="M_PersonInfo" ToRole="M_Phones" />
+        </EntityType>
+        <EntityType Name="M_Phones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Person_Id" Type="Int32" />
+          <NavigationProperty Name="M_PersonInfo" Relationship="Self.FK_dbo_M_Phones_dbo_M_PersonInfo_Person_Id" FromRole="M_Phones" ToRole="M_PersonInfo" />
+        </EntityType>
+        <EntityType Name="M_Report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypeReport_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="M_ReportType" Relationship="Self.FK_dbo_M_Report_dbo_M_ReportType_TypeReport_Id" FromRole="M_Report" ToRole="M_ReportType" />
+        </EntityType>
+        <EntityType Name="M_ReportType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="M_Report" Relationship="Self.FK_dbo_M_Report_dbo_M_ReportType_TypeReport_Id" FromRole="M_ReportType" ToRole="M_Report" />
+        </EntityType>
+        <EntityType Name="M_Rfids">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RfidCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsArhive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="M_Person" Relationship="Self.FK_dbo_M_Person_dbo_M_Rfids_Id" FromRole="M_Rfids" ToRole="M_Person" />
+        </EntityType>
+        <EntityType Name="M_Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="M_Person" Relationship="Self.M_RoleM_Person" FromRole="M_Role" ToRole="M_Person" />
+        </EntityType>
+        <EntityType Name="M_Setting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ThemeApp" Type="Int32" Nullable="false" />
+          <Property Name="ThemeAccent" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="M_SettingEmail" Relationship="Self.FK_dbo_M_Setting_dbo_M_SettingEmail_Id" FromRole="M_Setting" ToRole="M_SettingEmail" />
+          <NavigationProperty Name="M_SettingExcel" Relationship="Self.FK_dbo_M_Setting_dbo_M_SettingExcel_Id" FromRole="M_Setting" ToRole="M_SettingExcel" />
+          <NavigationProperty Name="M_SettingLanguage" Relationship="Self.FK_dbo_M_Setting_dbo_M_SettingLanguage_Id" FromRole="M_Setting" ToRole="M_SettingLanguage" />
+          <NavigationProperty Name="M_SettingLimitTimer" Relationship="Self.FK_dbo_M_Setting_dbo_M_SettingLimitTimer_Id" FromRole="M_Setting" ToRole="M_SettingLimitTimer" />
+        </EntityType>
+        <EntityType Name="M_SettingEmail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MailFrom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="M_Setting" Relationship="Self.FK_dbo_M_Setting_dbo_M_SettingEmail_Id" FromRole="M_SettingEmail" ToRole="M_Setting" />
+        </EntityType>
+        <EntityType Name="M_SettingExcel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="M_Setting" Relationship="Self.FK_dbo_M_Setting_dbo_M_SettingExcel_Id" FromRole="M_SettingExcel" ToRole="M_Setting" />
+        </EntityType>
+        <EntityType Name="M_SettingLanguage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SelectedLanguage" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="M_Setting" Relationship="Self.FK_dbo_M_Setting_dbo_M_SettingLanguage_Id" FromRole="M_SettingLanguage" ToRole="M_Setting" />
+        </EntityType>
+        <EntityType Name="M_SettingLimitTimer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaxTimeInside" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="IntervalCheck" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="M_Setting" Relationship="Self.FK_dbo_M_Setting_dbo_M_SettingLimitTimer_Id" FromRole="M_SettingLimitTimer" ToRole="M_Setting" />
+        </EntityType>
+        <EntityType Name="M_WorkDayTimes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SingleDate" Type="DateTime" Precision="3" />
+          <Property Name="TimeIn" Type="Time" Precision="7" />
+          <Property Name="TimeOut" Type="Time" Precision="7" />
+          <Property Name="Employee_Id" Type="Int32" />
+          <NavigationProperty Name="M_Person" Relationship="Self.FK_dbo_M_WorkDayTimes_dbo_M_Person_Employee_Id" FromRole="M_WorkDayTimes" ToRole="M_Person" />
+        </EntityType>
+        <EntityType Name="M_WorkSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Start" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="End" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Valid" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="TimeDinner" Type="Time" Precision="7" />
+          <Property Name="Employee_Id" Type="Int32" />
+          <NavigationProperty Name="M_Person" Relationship="Self.FK_dbo_M_WorkSchedule_dbo_M_Person_Employee_Id" FromRole="M_WorkSchedule" ToRole="M_Person" />
+        </EntityType>
+        <Association Name="FK_dbo_M_CalendarDate_dbo_M_Person_Employee_Id">
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="0..1" />
+          <End Role="M_CalendarDate" Type="Self.M_CalendarDate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_CalendarDate">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Department_dbo_M_Person_Director_Id">
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="0..1" />
+          <End Role="M_Department" Type="Self.M_Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Department">
+              <PropertyRef Name="Director_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Person_dbo_M_Department_Department_Id">
+          <End Role="M_Department" Type="Self.M_Department" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Person">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Person_dbo_M_Department_M_Department_Id">
+          <End Role="M_Department" Type="Self.M_Department" Multiplicity="0..1" />
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Person">
+              <PropertyRef Name="M_Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Person_dbo_M_Person_M_Person_Id">
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="0..1" />
+          <End Role="M_Person1" Type="Self.M_Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Person1">
+              <PropertyRef Name="M_Person_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Person_dbo_M_PersonInfo_Id">
+          <End Role="M_PersonInfo" Type="Self.M_PersonInfo" Multiplicity="1" />
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="M_PersonInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Person">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Person_dbo_M_Rfids_Id">
+          <End Role="M_Rfids" Type="Self.M_Rfids" Multiplicity="1" />
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="M_Rfids">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Person">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_WorkDayTimes_dbo_M_Person_Employee_Id">
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="0..1" />
+          <End Role="M_WorkDayTimes" Type="Self.M_WorkDayTimes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_WorkDayTimes">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_WorkSchedule_dbo_M_Person_Employee_Id">
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="0..1" />
+          <End Role="M_WorkSchedule" Type="Self.M_WorkSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_WorkSchedule">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Phones_dbo_M_PersonInfo_Person_Id">
+          <End Role="M_PersonInfo" Type="Self.M_PersonInfo" Multiplicity="0..1" />
+          <End Role="M_Phones" Type="Self.M_Phones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_PersonInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Phones">
+              <PropertyRef Name="Person_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Report_dbo_M_ReportType_TypeReport_Id">
+          <End Role="M_ReportType" Type="Self.M_ReportType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="M_Report" Type="Self.M_Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="M_ReportType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Report">
+              <PropertyRef Name="TypeReport_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Setting_dbo_M_SettingEmail_Id">
+          <End Role="M_SettingEmail" Type="Self.M_SettingEmail" Multiplicity="1" />
+          <End Role="M_Setting" Type="Self.M_Setting" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="M_SettingEmail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Setting">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Setting_dbo_M_SettingExcel_Id">
+          <End Role="M_SettingExcel" Type="Self.M_SettingExcel" Multiplicity="1" />
+          <End Role="M_Setting" Type="Self.M_Setting" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="M_SettingExcel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Setting">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Setting_dbo_M_SettingLanguage_Id">
+          <End Role="M_SettingLanguage" Type="Self.M_SettingLanguage" Multiplicity="1" />
+          <End Role="M_Setting" Type="Self.M_Setting" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="M_SettingLanguage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Setting">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_M_Setting_dbo_M_SettingLimitTimer_Id">
+          <End Role="M_SettingLimitTimer" Type="Self.M_SettingLimitTimer" Multiplicity="1" />
+          <End Role="M_Setting" Type="Self.M_Setting" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="M_SettingLimitTimer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="M_Setting">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="M_RoleM_Person">
+          <End Role="M_Person" Type="Self.M_Person" Multiplicity="*" />
+          <End Role="M_Role" Type="Self.M_Role" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AccountingStaffConnectionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="M_CalendarDate" EntityType="Self.M_CalendarDate" />
+          <EntitySet Name="M_Department" EntityType="Self.M_Department" />
+          <EntitySet Name="M_Person" EntityType="Self.M_Person" />
+          <EntitySet Name="M_PersonInfo" EntityType="Self.M_PersonInfo" />
+          <EntitySet Name="M_Phones" EntityType="Self.M_Phones" />
+          <EntitySet Name="M_Report" EntityType="Self.M_Report" />
+          <EntitySet Name="M_ReportType" EntityType="Self.M_ReportType" />
+          <EntitySet Name="M_Rfids" EntityType="Self.M_Rfids" />
+          <EntitySet Name="M_Role" EntityType="Self.M_Role" />
+          <EntitySet Name="M_Setting" EntityType="Self.M_Setting" />
+          <EntitySet Name="M_SettingEmail" EntityType="Self.M_SettingEmail" />
+          <EntitySet Name="M_SettingExcel" EntityType="Self.M_SettingExcel" />
+          <EntitySet Name="M_SettingLanguage" EntityType="Self.M_SettingLanguage" />
+          <EntitySet Name="M_SettingLimitTimer" EntityType="Self.M_SettingLimitTimer" />
+          <EntitySet Name="M_WorkDayTimes" EntityType="Self.M_WorkDayTimes" />
+          <EntitySet Name="M_WorkSchedule" EntityType="Self.M_WorkSchedule" />
+          <AssociationSet Name="FK_dbo_M_CalendarDate_dbo_M_Person_Employee_Id" Association="Self.FK_dbo_M_CalendarDate_dbo_M_Person_Employee_Id">
+            <End Role="M_Person" EntitySet="M_Person" />
+            <End Role="M_CalendarDate" EntitySet="M_CalendarDate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Department_dbo_M_Person_Director_Id" Association="Self.FK_dbo_M_Department_dbo_M_Person_Director_Id">
+            <End Role="M_Person" EntitySet="M_Person" />
+            <End Role="M_Department" EntitySet="M_Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Person_dbo_M_Department_Department_Id" Association="Self.FK_dbo_M_Person_dbo_M_Department_Department_Id">
+            <End Role="M_Department" EntitySet="M_Department" />
+            <End Role="M_Person" EntitySet="M_Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Person_dbo_M_Department_M_Department_Id" Association="Self.FK_dbo_M_Person_dbo_M_Department_M_Department_Id">
+            <End Role="M_Department" EntitySet="M_Department" />
+            <End Role="M_Person" EntitySet="M_Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Person_dbo_M_Person_M_Person_Id" Association="Self.FK_dbo_M_Person_dbo_M_Person_M_Person_Id">
+            <End Role="M_Person" EntitySet="M_Person" />
+            <End Role="M_Person1" EntitySet="M_Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Person_dbo_M_PersonInfo_Id" Association="Self.FK_dbo_M_Person_dbo_M_PersonInfo_Id">
+            <End Role="M_PersonInfo" EntitySet="M_PersonInfo" />
+            <End Role="M_Person" EntitySet="M_Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Person_dbo_M_Rfids_Id" Association="Self.FK_dbo_M_Person_dbo_M_Rfids_Id">
+            <End Role="M_Rfids" EntitySet="M_Rfids" />
+            <End Role="M_Person" EntitySet="M_Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_WorkDayTimes_dbo_M_Person_Employee_Id" Association="Self.FK_dbo_M_WorkDayTimes_dbo_M_Person_Employee_Id">
+            <End Role="M_Person" EntitySet="M_Person" />
+            <End Role="M_WorkDayTimes" EntitySet="M_WorkDayTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_WorkSchedule_dbo_M_Person_Employee_Id" Association="Self.FK_dbo_M_WorkSchedule_dbo_M_Person_Employee_Id">
+            <End Role="M_Person" EntitySet="M_Person" />
+            <End Role="M_WorkSchedule" EntitySet="M_WorkSchedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Phones_dbo_M_PersonInfo_Person_Id" Association="Self.FK_dbo_M_Phones_dbo_M_PersonInfo_Person_Id">
+            <End Role="M_PersonInfo" EntitySet="M_PersonInfo" />
+            <End Role="M_Phones" EntitySet="M_Phones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Report_dbo_M_ReportType_TypeReport_Id" Association="Self.FK_dbo_M_Report_dbo_M_ReportType_TypeReport_Id">
+            <End Role="M_ReportType" EntitySet="M_ReportType" />
+            <End Role="M_Report" EntitySet="M_Report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Setting_dbo_M_SettingEmail_Id" Association="Self.FK_dbo_M_Setting_dbo_M_SettingEmail_Id">
+            <End Role="M_SettingEmail" EntitySet="M_SettingEmail" />
+            <End Role="M_Setting" EntitySet="M_Setting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Setting_dbo_M_SettingExcel_Id" Association="Self.FK_dbo_M_Setting_dbo_M_SettingExcel_Id">
+            <End Role="M_SettingExcel" EntitySet="M_SettingExcel" />
+            <End Role="M_Setting" EntitySet="M_Setting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Setting_dbo_M_SettingLanguage_Id" Association="Self.FK_dbo_M_Setting_dbo_M_SettingLanguage_Id">
+            <End Role="M_SettingLanguage" EntitySet="M_SettingLanguage" />
+            <End Role="M_Setting" EntitySet="M_Setting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_M_Setting_dbo_M_SettingLimitTimer_Id" Association="Self.FK_dbo_M_Setting_dbo_M_SettingLimitTimer_Id">
+            <End Role="M_SettingLimitTimer" EntitySet="M_SettingLimitTimer" />
+            <End Role="M_Setting" EntitySet="M_Setting" />
+          </AssociationSet>
+          <AssociationSet Name="M_RoleM_Person" Association="Self.M_RoleM_Person">
+            <End Role="M_Person" EntitySet="M_Person" />
+            <End Role="M_Role" EntitySet="M_Role" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AccountingStaffConnectionModelStoreContainer" CdmEntityContainer="AccountingStaffConnectionEntities">
+          <EntitySetMapping Name="M_CalendarDate">
+            <EntityTypeMapping TypeName="AccountingStaffConnectionModel.M_CalendarDate">
+              <MappingFragment StoreEntitySet="M_CalendarDate">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TypeDate" ColumnName="TypeDate" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="End" ColumnName="End" />
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Department">
+            <EntityTypeMapping TypeName="AccountingStaffConnectionModel.M_Department">
+              <MappingFragment StoreEntitySet="M_Department">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="CodeFull" ColumnName="CodeFull" />
+                <ScalarProperty Name="Director_Id" ColumnName="Director_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Person">
+            <EntityTypeMapping TypeName="AccountingStaffConnectionModel.M_Person">
+              <MappingFragment StoreEntitySet="M_Person">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="M_Person_Id" ColumnName="M_Person_Id" />
+                <ScalarProperty Name="M_Department_Id" ColumnName="M_Department_Id" />
+                <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_PersonInfo">
+            <EntityTypeMapping TypeName="AccountingStaffConnectionModel.M_PersonInfo">
+              <MappingFragment StoreEntitySet="M_PersonInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameFirst" ColumnName="NameFirst" />
+                <ScalarProperty Name="NameSecond" ColumnName="NameSecond" />
+                <ScalarProperty Name="NameThird" ColumnName="NameThird" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="DateBirth" ColumnName="DateBirth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Phones">
+            <EntityTypeMapping TypeName="AccountingStaffConnectionModel.M_Phones">
+              <MappingFragment StoreEntitySet="M_Phones">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Person_Id" ColumnName="Person_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Report">
+            <EntityTypeMapping TypeName="AccountingStaffConnectionModel.M_Report">
+              <MappingFragment StoreEntitySet="M_Report">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+                <ScalarProperty Name="TypeReport_Id" ColumnName="TypeReport_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_ReportType">
+            <EntityTypeMapping TypeName="AccountingStaffConnectionModel.M_ReportType">
+              <MappingFragment StoreEntitySet="M_ReportType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Rfids">
+            <EntityTypeMapping TypeName="AccountingStaffConnectionModel.M_Rfids">
+              <MappingFragment StoreEntitySet="M_Rfids">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RfidCode" ColumnName="RfidCode" />
+                <ScalarProperty Name="IsArhive" ColumnName="IsArhive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Role">
+            <EntityTypeMapping TypeName="AccountingStaffConnectionModel.M_Role">
+              <MappingFragment StoreEntitySet="M_Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Setting">
+            <EntityTypeMapping TypeName="AccountingStaffConnectionModel.M_Setting">
+              <MappingFragment StoreEntitySet="M_Setting">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ThemeApp" ColumnName="ThemeApp" />
+                <ScalarProperty Name="ThemeAccent" ColumnName="ThemeAccent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_SettingEmail">
+            <EntityTypeMapping TypeName="AccountingStaffConnectionModel.M_SettingEmail">
+              <MappingFragment StoreEntitySet="M_SettingEmail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MailFrom" ColumnName="MailFrom" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_SettingExcel">
+            <EntityTypeMapping TypeName="AccountingStaffConnectionModel.M_SettingExcel">
+              <MappingFragment StoreEntitySet="M_SettingExcel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_SettingLanguage">
+            <EntityTypeMapping TypeName="AccountingStaffConnectionModel.M_SettingLanguage">
+              <MappingFragment StoreEntitySet="M_SettingLanguage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SelectedLanguage" ColumnName="SelectedLanguage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_SettingLimitTimer">
+            <EntityTypeMapping TypeName="AccountingStaffConnectionModel.M_SettingLimitTimer">
+              <MappingFragment StoreEntitySet="M_SettingLimitTimer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MaxTimeInside" ColumnName="MaxTimeInside" />
+                <ScalarProperty Name="IntervalCheck" ColumnName="IntervalCheck" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_WorkDayTimes">
+            <EntityTypeMapping TypeName="AccountingStaffConnectionModel.M_WorkDayTimes">
+              <MappingFragment StoreEntitySet="M_WorkDayTimes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SingleDate" ColumnName="SingleDate" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_WorkSchedule">
+            <EntityTypeMapping TypeName="AccountingStaffConnectionModel.M_WorkSchedule">
+              <MappingFragment StoreEntitySet="M_WorkSchedule">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="End" ColumnName="End" />
+                <ScalarProperty Name="Valid" ColumnName="Valid" />
+                <ScalarProperty Name="TimeDinner" ColumnName="TimeDinner" />
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="M_RoleM_Person" TypeName="AccountingStaffConnectionModel.M_RoleM_Person" StoreEntitySet="M_RoleM_Person">
+            <EndProperty Name="M_Person">
+              <ScalarProperty Name="Id" ColumnName="M_Person_Id" />
+            </EndProperty>
+            <EndProperty Name="M_Role">
+              <ScalarProperty Name="Id" ColumnName="M_Role_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram DiagramId="a30817921e9349a1b239187dfc39e5e9" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="AccountingStaffConnectionModel.M_CalendarDate" Width="1.5" PointX="3.125" PointY="6.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="AccountingStaffConnectionModel.M_Department" Width="1.5" PointX="5.375" PointY="7" IsExpanded="false" />
+        <EntityTypeShape EntityType="AccountingStaffConnectionModel.M_Person" Width="1.5" PointX="3" PointY="7.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="AccountingStaffConnectionModel.M_PersonInfo" Width="1.5" PointX="1.25" PointY="8.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="AccountingStaffConnectionModel.M_Phones" Width="1.5" PointX="1.25" PointY="9.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="AccountingStaffConnectionModel.M_Report" Width="1.5" PointX="7.625" PointY="6" IsExpanded="false" />
+        <EntityTypeShape EntityType="AccountingStaffConnectionModel.M_ReportType" Width="1.5" PointX="7.625" PointY="5.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="AccountingStaffConnectionModel.M_Rfids" Width="1.5" PointX="1.25" PointY="6.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="AccountingStaffConnectionModel.M_Role" Width="1.5" PointX="5.375" PointY="7.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="AccountingStaffConnectionModel.M_Setting" Width="1.5" PointX="5.375" PointY="4.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="AccountingStaffConnectionModel.M_SettingEmail" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="AccountingStaffConnectionModel.M_SettingExcel" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="AccountingStaffConnectionModel.M_SettingLanguage" Width="1.875" PointX="2.375" PointY="4.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="AccountingStaffConnectionModel.M_SettingLimitTimer" Width="1.5" PointX="5.375" PointY="5.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="AccountingStaffConnectionModel.M_WorkDayTimes" Width="1.875" PointX="5" PointY="9.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="AccountingStaffConnectionModel.M_WorkSchedule" Width="1.75" PointX="3" PointY="9.125" IsExpanded="false" />
+        <AssociationConnector Association="AccountingStaffConnectionModel.FK_dbo_M_CalendarDate_dbo_M_Person_Employee_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingStaffConnectionModel.FK_dbo_M_Department_dbo_M_Person_Director_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingStaffConnectionModel.FK_dbo_M_Person_dbo_M_Department_Department_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingStaffConnectionModel.FK_dbo_M_Person_dbo_M_Department_M_Department_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingStaffConnectionModel.FK_dbo_M_Person_dbo_M_Person_M_Person_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingStaffConnectionModel.FK_dbo_M_Person_dbo_M_PersonInfo_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingStaffConnectionModel.FK_dbo_M_Person_dbo_M_Rfids_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingStaffConnectionModel.FK_dbo_M_WorkDayTimes_dbo_M_Person_Employee_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingStaffConnectionModel.FK_dbo_M_WorkSchedule_dbo_M_Person_Employee_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingStaffConnectionModel.FK_dbo_M_Phones_dbo_M_PersonInfo_Person_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingStaffConnectionModel.FK_dbo_M_Report_dbo_M_ReportType_TypeReport_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingStaffConnectionModel.FK_dbo_M_Setting_dbo_M_SettingEmail_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingStaffConnectionModel.FK_dbo_M_Setting_dbo_M_SettingExcel_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingStaffConnectionModel.FK_dbo_M_Setting_dbo_M_SettingLanguage_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingStaffConnectionModel.FK_dbo_M_Setting_dbo_M_SettingLimitTimer_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingStaffConnectionModel.M_RoleM_Person" ManuallyRouted="false" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

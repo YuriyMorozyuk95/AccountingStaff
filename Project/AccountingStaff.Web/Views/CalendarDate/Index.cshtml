@@ -1,0 +1,60 @@
+﻿@model IEnumerable<AccountingStaff.Web.ViewModels.CalendarDateViewModel>
+
+@{
+    ViewBag.Title = "Таблиця дат неявок неявок на роботу";
+}
+
+<h2>Таблиця дат неявок неявок на роботу</h2>
+
+<p class="left-p">
+    <br />
+    @Html.ActionLink("Створити нову дату", "Create", null, new { @class = "btn-green" })
+    <br />
+    <br />
+</p>
+<table class="table,GreenTable">
+    <tr>
+        <th class="">
+            @Html.DisplayNameFor(model => model.TypeDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Start)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.End)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameEmployer)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Start)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.End)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameEmployer)
+            </td>
+            <td>
+                <div class="calendar-control">
+                    <a class="btn-blue-icon" href="@Url.Action("Edit", new { id = item.Id })"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a class="btn-green-icon" href="@Url.Action("Details", new { id = item.Id })"><span class="glyphicon glyphicon-search"></span></a>
+                    <a class="btn-red-icon" href="@Url.Action("Delete", new { id = item.Id })">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>
